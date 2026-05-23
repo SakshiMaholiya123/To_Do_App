@@ -3,7 +3,7 @@ import json
 
 app=FastAPI()
 
-#to reead the json file
+#to read the json file
 
 def load_data():
     with open('data.json','r') as file:
@@ -13,14 +13,21 @@ def load_data():
 
 #get the  all tasks
 
-@app.get('/tasks')
 def get_tasks():
     task=load_data()
     return task
 
 
+#to get the specific task
+def get_specific_task(task_id:int):
+    task=load_data()
+    for t in task:
+        if t['id']==task_id:
+            return t
+        else:
+            return {"error":"task is not found"}
+
 # delete task
-@app.delete(('/tasks/{task_id}'))
 def delete(task_id):
     tasks=load_data()
 
@@ -30,3 +37,7 @@ def delete(task_id):
             return {'message:task deleted'}
         else:
             return{'error:task is not available'}
+        
+
+
+#update the task
