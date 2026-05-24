@@ -2,7 +2,7 @@ from jose import jwt
 from passlib.context import CryptContext
 from datetime import datetime, timedelta
 
-SECRET_KEY = "mysecretkey"
+SECRET_KEY = "secretkey"
 ALGORITHM = "HS256"
 
 pwd_context = CryptContext(
